@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Stanley Murasakie</title>
+   <link rel="stylesheet" href="styles.css">
+   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+   <!-- Dark Mode Toggle -->
+   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+      <span class="toggle-icon">☀</span>
+   </button>
+
+   <header>
+      <div class="header-bg"></div>
+      <div class="container">
+         <div class="header-content">
+            <p class="label-text">3D ARTIST & VISUAL DIRECTOR</p>
+            <h1>Stanley <span class="accent">"murasakie"</span> Ivanov</h1>
+            <p class="tagline">Building immersive and stylized visuals with Unreal Engine</p>
+         </div>
+         <nav>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+         </nav>
+      </div>
+   </header>
+
+   <main class="container">
+
+      <!-- ABOUT -->
+      <section id="about" class="reveal">
+         <h2>About Me</h2>
+         <p>
+            I am a 3D artist specializing in cinematic visuals and real-time rendering in Unreal Engine.
+            My work focuses on lighting, mood, and composition to create immersive environments.
+         </p>
+         <p>
+            I enjoy building scenes that feel atmospheric and slightly surreal, combining realism with stylized elements inspired by games and film.
+         </p>
+         <ul class="skills-list" id="skillsList"></ul>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="reveal">
+         <h2>Projects</h2>
+         <div id="projectGrid"></div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="reveal">
+         <h2>Contact</h2>
+         <p>Email: <a href="mailto:stasick2k@gmail.com">stasick2k@gmail.com</a></p>
+         <p>YouTube: <a href="https://www.youtube.com/@stasxivanov" target="_blank" rel="noopener noreferrer">@stasxivanov</a></p>
+
+         <div class="visitor-counter">
+            <span class="counter-label">VISITORS</span>
+            <span class="counter-number" id="visitorCount">—</span>
+         </div>
+      </section>
+
+   </main>
+
+   <footer id="footer">
+      <p>&copy; 2026 Stas Ivanov. All rights reserved.</p>
+   </footer>
+
+   <script src="script.js"></script>
+</body>
+</html>
