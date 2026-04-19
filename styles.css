@@ -1,0 +1,86 @@
+body {
+   margin: 0;
+   font-family: Arial, sans-serif;
+   background-color: #0f172a;
+   color: #e5e7eb;
+   line-height: 1.6;
+}
+
+.container {
+   max-width: 800px;
+   margin: 0 auto;
+   padding: 20px;
+}
+
+header {
+   background-color: #020617;
+   text-align: center;
+   padding: 40px 20px;
+   border-bottom: 1px solid #1e293b;
+}
+
+h1 {
+   margin-bottom: 10px;
+   font-size: 2.5rem;
+   color: #f9fafb;
+}
+
+.tagline {
+   margin-bottom: 20px;
+   color: #94a3b8;
+   font-style: italic;
+}
+
+nav a {
+   margin: 0 10px;
+   text-decoration: none;
+   color: #38bdf8;
+   font-weight: bold;
+   transition: color 0.2s ease;
+}
+
+nav a:hover {
+   color: #f472b6;
+}
+
+section {
+   background-color: #020617;
+   margin: 20px 0;
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.project-card {
+   border: 1px solid #1e293b;
+   padding: 15px;
+   margin-bottom: 20px;
+   border-radius: 8px;
+}
+
+.skills-list li {
+   margin-bottom: 8px;
+}
+
+a {
+   color: #38bdf8;
+}
+
+a:hover {
+   color: #f472b6;
+}
+
+iframe {
+   margin-top: 10px;
+   border-radius: 8px;
+   border: none;
+}
+
+#footer {
+   text-align: center;
+   padding: 20px;
+   background-color: #020617;
+   border-top: 1px solid #1e293b;
+   margin-top: 20px;
+   color: #94a3b8;
+}
