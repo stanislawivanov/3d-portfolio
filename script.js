@@ -92,6 +92,93 @@ async function initVisitorCounter() {
 }
 
 
+// ── INFINITE GRID BACKGROUND ───────────────────────────────────────
+function initInfiniteGrid() {
+   const canvas = document.getElementById("gridCanvas");
+   const header = canvas.parentElement;
+   const ctx = canvas.getContext("2d");
+   const CELL = 40;
+   const SPEED = 0.5;
+
+   let offsetX = 0, offsetY = 0;
+   let mouseX = -9999, mouseY = -9999;
+   let animFrame;
+
+   function resize() {
+      canvas.width  = header.offsetWidth;
+      canvas.height = header.offsetHeight;
+   }
+
+   function getGridColor() {
+      const isDark = document.documentElement.getAttribute("data-theme") !== "light";
+      return isDark ? "rgba(240,240,240," : "rgba(10,10,10,";
+   }
+
+   function draw() {
+      const w = canvas.width, h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const base = getGridColor();
+      offsetX = (offsetX + SPEED) % CELL;
+      offsetY = (offsetY + SPEED) % CELL;
+
+      // Draw dim base grid
+      ctx.strokeStyle = base + "0.06)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let x = offsetX; x < w; x += CELL) {
+         ctx.moveTo(x, 0); ctx.lineTo(x, h);
+      }
+      for (let y = offsetY; y < h; y += CELL) {
+         ctx.moveTo(0, y); ctx.lineTo(w, y);
+      }
+      ctx.stroke();
+
+      // Draw spotlight grid using radial mask simulation
+      const RADIUS = 180;
+      const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, RADIUS);
+      gradient.addColorStop(0,   base + "0.45)");
+      gradient.addColorStop(0.5, base + "0.15)");
+      gradient.addColorStop(1,   base + "0)");
+
+      ctx.save();
+      // Clip to a circle around the mouse
+      ctx.beginPath();
+      ctx.arc(mouseX, mouseY, RADIUS, 0, Math.PI * 2);
+      ctx.clip();
+
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let x = offsetX; x < w; x += CELL) {
+         ctx.moveTo(x, 0); ctx.lineTo(x, h);
+      }
+      for (let y = offsetY; y < h; y += CELL) {
+         ctx.moveTo(0, y); ctx.lineTo(w, y);
+      }
+      ctx.stroke();
+      ctx.restore();
+
+      animFrame = requestAnimationFrame(draw);
+   }
+
+   // Track mouse relative to header
+   header.addEventListener("mousemove", (e) => {
+      const rect = header.getBoundingClientRect();
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
+   });
+
+   header.addEventListener("mouseleave", () => {
+      mouseX = -9999; mouseY = -9999;
+   });
+
+   window.addEventListener("resize", resize);
+   resize();
+   draw();
+}
+
+
 // ── TYPING ANIMATION ───────────────────────────────────────────────
 function initTypingAnimation() {
    const el = document.querySelector(".tagline");
@@ -148,6 +235,7 @@ document.addEventListener("DOMContentLoaded", async () => {
    await loadAndRenderSkills();
    await loadAndRenderProjects();
    initThemeToggle();
+   initInfiniteGrid();
    initTypingAnimation();
    initScrollProgress();
    initStickyNav();
