@@ -3,16 +3,15 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Stanley Murasakie</title>
+   <title>Stanislav Ivanov</title>
    <link rel="stylesheet" href="styles.css">
-   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 </head>
 <body>
 
-   <!-- Dark Mode Toggle -->
-   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
-      <span class="toggle-icon">☀</span>
-   </button>
+   <div class="scroll-progress-track">
+      <div class="scroll-progress-fill" id="scrollFill"></div>
+   </div>
 
    <header>
       <div class="header-bg"></div>
@@ -26,6 +25,12 @@
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
+            <label class="theme-switch" aria-label="Toggle dark mode">
+               <span class="switch-label">Dark Mode</span>
+               <div class="switch-track" id="themeToggle">
+                  <div class="switch-thumb"></div>
+               </div>
+            </label>
          </nav>
       </div>
    </header>

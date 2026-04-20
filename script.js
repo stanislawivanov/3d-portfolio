@@ -1,39 +1,11 @@
 // ── DATA ──────────────────────────────────────────────────────────
-// Project cards are generated from this JSON data
-const projects = [
-   {
-      title: "CS2 with RTX ON",
-      description: "A cinematic reimagining of CS2 focused on realism, lighting, and high-end visual quality using Unreal Engine.",
-      tag: "Cinematic",
-      videoId: "jq0Mp5ZscS4"
-   },
-   {
-      title: "CS2, but it's a Hollywood Blockbuster",
-      description: "A stylized cinematic project inspired by Michael Bay movies — big explosions, dramatic cuts, and over-the-top energy.",
-      tag: "Stylized",
-      videoId: "ZSiaKf5X8Wg"
-   },
-   {
-      title: "CS2, but you are detached from reality",
-      description: "A surreal and atmospheric piece exploring dreamlike visuals and experimental storytelling within a CS2-inspired world.",
-      tag: "Experimental",
-      videoId: "kl4_USgMafE"
-   }
-];
+// Projects and skills are loaded from external JSON files.
+// This demonstrates fetching and rendering data from JSON.
 
-// Skills data loaded from JavaScript (dynamic skill rendering)
-const skills = [
-   "Unreal Engine",
-   "Real-time Rendering",
-   "Lighting & Composition",
-   "3D Modeling",
-   "Scene Design",
-   "Cinematic Visuals"
-];
+async function loadAndRenderSkills() {
+   const res = await fetch("skills.json");
+   const skills = await res.json();
 
-
-// ── RENDER SKILLS ──────────────────────────────────────────────────
-function renderSkills() {
    const list = document.getElementById("skillsList");
    skills.forEach(skill => {
       const li = document.createElement("li");
@@ -42,9 +14,10 @@ function renderSkills() {
    });
 }
 
+async function loadAndRenderProjects() {
+   const res = await fetch("projects.json");
+   const projects = await res.json();
 
-// ── RENDER PROJECTS ────────────────────────────────────────────────
-function renderProjects() {
    const grid = document.getElementById("projectGrid");
    projects.forEach((project, i) => {
       const card = document.createElement("div");
@@ -68,19 +41,24 @@ function renderProjects() {
 
 // ── DARK MODE TOGGLE ───────────────────────────────────────────────
 function initThemeToggle() {
-   const toggle = document.getElementById("themeToggle");
-   const icon = toggle.querySelector(".toggle-icon");
-   const saved = localStorage.getItem("theme") || "dark";
+   const track = document.getElementById("themeToggle");
+   const saved = localStorage.getItem("theme") || "light";
 
-   document.documentElement.setAttribute("data-theme", saved);
-   icon.textContent = saved === "dark" ? "☀" : "☾";
+   function applyTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+      if (theme === "dark") {
+         track.classList.add("on");
+      } else {
+         track.classList.remove("on");
+      }
+   }
 
-   toggle.addEventListener("click", () => {
+   applyTheme(saved);
+
+   track.addEventListener("click", () => {
       const current = document.documentElement.getAttribute("data-theme");
-      const next = current === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
-      localStorage.setItem("theme", next);
-      icon.textContent = next === "dark" ? "☀" : "☾";
+      applyTheme(current === "dark" ? "light" : "dark");
    });
 }
 
@@ -114,11 +92,65 @@ async function initVisitorCounter() {
 }
 
 
+// ── TYPING ANIMATION ───────────────────────────────────────────────
+function initTypingAnimation() {
+   const el = document.querySelector(".tagline");
+   const text = el.textContent.trim();
+   el.textContent = "";
+   el.style.opacity = 1;
+
+   let i = 0;
+   function type() {
+      if (i < text.length) {
+         el.textContent += text[i];
+         i++;
+         setTimeout(type, 40);
+      }
+   }
+
+   // Small delay so it starts after the name has faded in
+   setTimeout(type, 600);
+}
+
+
+// ── SCROLL PROGRESS BAR ────────────────────────────────────────────
+function initScrollProgress() {
+   const fill = document.getElementById("scrollFill");
+
+   window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      fill.style.height = progress + "%";
+   });
+}
+
+
+// ── STICKY NAV ─────────────────────────────────────────────────────
+function initStickyNav() {
+   const nav = document.querySelector("nav");
+   const navOffsetTop = nav.getBoundingClientRect().top + window.scrollY;
+
+   window.addEventListener("scroll", () => {
+      if (window.scrollY >= navOffsetTop) {
+         nav.classList.add("sticky");
+         document.body.style.paddingTop = nav.offsetHeight + "px";
+      } else {
+         nav.classList.remove("sticky");
+         document.body.style.paddingTop = "0";
+      }
+   });
+}
+
+
 // ── INIT ───────────────────────────────────────────────────────────
-document.addEventListener("DOMContentLoaded", () => {
-   renderSkills();
-   renderProjects();
+document.addEventListener("DOMContentLoaded", async () => {
+   await loadAndRenderSkills();
+   await loadAndRenderProjects();
    initThemeToggle();
+   initTypingAnimation();
+   initScrollProgress();
+   initStickyNav();
    initScrollReveal();
    initVisitorCounter();
 });
