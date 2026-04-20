@@ -32,6 +32,7 @@ body {
    color: var(--text);
    line-height: 1.7;
    transition: background-color var(--transition), color var(--transition);
+   padding-top: 58px;
 }
 
 .container {
@@ -117,11 +118,24 @@ h1 {
 }
 
 nav {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   z-index: 998;
    display: flex;
    justify-content: center;
    gap: 8px;
    flex-wrap: wrap;
+   padding: 12px 24px;
+   background: rgba(2, 6, 23, 0.85);
+   backdrop-filter: blur(12px);
+   border-bottom: 1px solid var(--border);
    animation: fadeDown 0.8s 0.2s ease both;
+}
+
+[data-theme="light"] nav {
+   background: rgba(226, 232, 240, 0.85);
 }
 
 nav a {
