@@ -284,7 +284,7 @@ p { margin-bottom: 14px; color: var(--text); }
 /* ── SKILLS SCROLL ────────────────────────────────── */
 .skills-scroll-wrapper {
    overflow: hidden;
-   height: 220px;
+   height: 128px;
    margin-top: 24px;
    position: relative;
    -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
