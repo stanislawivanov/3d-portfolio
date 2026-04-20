@@ -1,20 +1,51 @@
 // ── DATA ──────────────────────────────────────────────────────────
-// Projects and skills are loaded from external JSON files.
-// This demonstrates fetching and rendering data from JSON.
+// Skills are fetched from skills.json (works on GitHub Pages).
+// Projects are fetched from projects.json.
+
+const SKILLS_FALLBACK = [
+   "Unreal Engine",
+   "Real-time Rendering",
+   "Lighting & Sequencing",
+   "Environment Design",
+   "Look Development",
+   "3D Scene Design",
+   "Camera Animation",
+   "FX & Chaos Destruction",
+   "Generative AI (ComfyUI)",
+   "Cinematic Composition"
+];
 
 async function loadAndRenderSkills() {
-   const res = await fetch("skills.json");
-   const skills = await res.json();
+   let skills = SKILLS_FALLBACK;
+   try {
+      const res = await fetch("skills.json");
+      if (res.ok) skills = await res.json();
+   } catch (e) {}
 
    const track = document.getElementById("skillsList");
+   track.innerHTML = "";
 
-   // Render twice for seamless infinite loop
-   [...skills, ...skills].forEach(skill => {
+   // Render 4x for a long seamless loop
+   [...skills, ...skills, ...skills, ...skills].forEach(skill => {
       const item = document.createElement("div");
       item.className = "skill-item";
       item.textContent = skill;
       track.appendChild(item);
    });
+
+   // JS-driven animation — works locally and on GitHub Pages
+   let pos = 0;
+   const itemHeight = 46; // px per item (height + gap)
+   const totalItems = skills.length;
+
+   function animate() {
+      pos += 0.5;
+      // Reset when we've scrolled exactly one full set
+      if (pos >= itemHeight * totalItems) pos = 0;
+      track.style.transform = `translateY(-${pos}px)`;
+      requestAnimationFrame(animate);
+   }
+   animate();
 }
 
 async function loadAndRenderProjects() {
