@@ -39,7 +39,7 @@ async function loadAndRenderSkills() {
    const totalItems = skills.length;
 
    function animate() {
-      pos += 0.5;
+      pos += 0.2;
       // Reset when we've scrolled exactly one full set
       if (pos >= itemHeight * totalItems) pos = 0;
       track.style.transform = `translateY(-${pos}px)`;
