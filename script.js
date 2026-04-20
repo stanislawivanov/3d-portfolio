@@ -1,7 +1,3 @@
-// ── DATA ──────────────────────────────────────────────────────────
-// Skills are fetched from skills.json (works on GitHub Pages).
-// Projects are fetched from projects.json.
-
 const SKILLS_FALLBACK = [
    "Unreal Engine",
    "Real-time Rendering",
@@ -25,7 +21,7 @@ async function loadAndRenderSkills() {
    const track = document.getElementById("skillsList");
    track.innerHTML = "";
 
-   // Render 4x for a long seamless loop
+   // renders 4x for a long seamless loop
    [...skills, ...skills, ...skills, ...skills].forEach(skill => {
       const item = document.createElement("div");
       item.className = "skill-item";
@@ -33,14 +29,14 @@ async function loadAndRenderSkills() {
       track.appendChild(item);
    });
 
-   // JS-driven animation — works locally and on GitHub Pages
+   // animation
    let pos = 0;
    const itemHeight = 46; // px per item (height + gap)
    const totalItems = skills.length;
 
    function animate() {
       pos += 0.1;
-      // Reset when we've scrolled exactly one full set
+      // reset
       if (pos >= itemHeight * totalItems) pos = 0;
       track.style.transform = `translateY(-${pos}px)`;
       requestAnimationFrame(animate);
@@ -73,7 +69,7 @@ async function loadAndRenderProjects() {
 }
 
 
-// ── DARK MODE TOGGLE ───────────────────────────────────────────────
+// DARK MODE TOGGLE
 function initThemeToggle() {
    const track = document.getElementById("themeToggle");
    const saved = localStorage.getItem("theme") || "light";
@@ -97,7 +93,7 @@ function initThemeToggle() {
 }
 
 
-// ── SCROLL REVEAL ANIMATIONS ───────────────────────────────────────
+// SCROLL REVEAL ANIMATIONS
 function initScrollReveal() {
    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -110,7 +106,7 @@ function initScrollReveal() {
    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 }
 
-// ── TYPING ANIMATION ───────────────────────────────────────────────
+// TYPING ANIMATION
 function initTypingAnimation() {
    const el = document.querySelector(".tagline");
    const text = el.textContent.trim();
@@ -126,12 +122,12 @@ function initTypingAnimation() {
       }
    }
 
-   // Small delay so it starts after the name has faded in
+   // delay so it starts after the name faded
    setTimeout(type, 600);
 }
 
 
-// ── SCROLL PROGRESS BAR ────────────────────────────────────────────
+// SCROLL PROGRESS BAR
 function initScrollProgress() {
    const fill = document.getElementById("scrollFill");
 
@@ -144,7 +140,7 @@ function initScrollProgress() {
 }
 
 
-// ── STICKY NAV ─────────────────────────────────────────────────────
+// STICKY NAV
 function initStickyNav() {
    const nav = document.querySelector("nav");
    const navOffsetTop = nav.getBoundingClientRect().top + window.scrollY;
@@ -161,7 +157,7 @@ function initStickyNav() {
 }
 
 
-// ── INIT ───────────────────────────────────────────────────────────
+// INIT
 document.addEventListener("DOMContentLoaded", async () => {
    await loadAndRenderSkills();
    await loadAndRenderProjects();
