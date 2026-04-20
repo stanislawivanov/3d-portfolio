@@ -76,22 +76,6 @@ function initScrollReveal() {
    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 }
 
-
-// ── VISITOR COUNTER ────────────────────────────────────────────────
-// Uses the free countapi.dev service — no account needed
-async function initVisitorCounter() {
-   const el = document.getElementById("visitorCount");
-   try {
-      // Replace "murasakie-portfolio" with any unique key you want
-      const res = await fetch("https://api.countapi.xyz/hit/murasakie-portfolio/visits");
-      const data = await res.json();
-      el.textContent = data.value.toLocaleString();
-   } catch {
-      el.textContent = "—";
-   }
-}
-
-
 // ── TYPING ANIMATION ───────────────────────────────────────────────
 function initTypingAnimation() {
    const el = document.querySelector(".tagline");
@@ -152,5 +136,4 @@ document.addEventListener("DOMContentLoaded", async () => {
    initScrollProgress();
    initStickyNav();
    initScrollReveal();
-   initVisitorCounter();
 });

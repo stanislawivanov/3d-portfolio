@@ -374,33 +374,6 @@ iframe {
    display: block;
 }
 
-/* ── VISITOR COUNTER ──────────────────────────────── */
-.visitor-counter {
-   display: inline-flex;
-   align-items: center;
-   gap: 12px;
-   margin-top: 28px;
-   padding: 10px 20px;
-   border: 1px solid var(--border);
-   border-radius: 100px;
-   background: var(--bg-card);
-}
-
-.counter-label {
-   font-family: var(--font-head);
-   font-size: 0.65rem;
-   letter-spacing: 0.15em;
-   text-transform: uppercase;
-   color: var(--text-muted);
-}
-
-.counter-number {
-   font-family: var(--font-head);
-   font-size: 1.2rem;
-   font-weight: 800;
-   color: var(--accent);
-}
-
 /* ── SCROLL PROGRESS BAR ──────────────────────────── */
 .scroll-progress-track {
    position: fixed;
