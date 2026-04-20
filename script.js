@@ -6,11 +6,14 @@ async function loadAndRenderSkills() {
    const res = await fetch("skills.json");
    const skills = await res.json();
 
-   const list = document.getElementById("skillsList");
-   skills.forEach(skill => {
-      const li = document.createElement("li");
-      li.textContent = skill;
-      list.appendChild(li);
+   const track = document.getElementById("skillsList");
+
+   // Render twice for seamless infinite loop
+   [...skills, ...skills].forEach(skill => {
+      const item = document.createElement("div");
+      item.className = "skill-item";
+      item.textContent = skill;
+      track.appendChild(item);
    });
 }
 

@@ -1,10 +1,12 @@
 [
-   "Unreal Engine (lighting, sequencing, rendering)",
+   "Unreal Engine",
+   "Real-time Rendering",
+   "Lighting & Sequencing",
    "Environment Design",
-   "Animation",
-   "Real-time Rendering Pipelines",
    "Look Development",
+   "3D Scene Design",
    "Camera Animation",
-   "Generative AI Workflows (ComfyUI)",
-   "FX (Chaos Destruction)"
+   "FX & Chaos Destruction",
+   "Generative AI (ComfyUI)",
+   "Cinematic Composition"
 ]

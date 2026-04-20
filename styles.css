@@ -281,37 +281,49 @@ h2 {
 
 p { margin-bottom: 14px; color: var(--text); }
 
-/* ── SKILLS LIST ──────────────────────────────────── */
-.skills-list {
-   list-style: none;
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: 12px;
-   margin-top: 20px;
+/* ── SKILLS SCROLL ────────────────────────────────── */
+.skills-scroll-wrapper {
+   overflow: hidden;
+   height: 220px;
+   margin-top: 24px;
+   position: relative;
+   -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+   mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
 }
 
-.skills-list li {
+.skills-track {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   animation: scrollSkills 14s linear infinite;
+}
+
+.skills-track .skill-item {
    background: var(--bg-card);
    border: 1px solid var(--border);
    color: var(--text);
-   padding: 16px 14px;
+   padding: 12px 20px;
    border-radius: var(--radius);
-   font-size: 0.72rem;
+   font-size: 0.78rem;
    font-family: var(--font-head);
    font-weight: 500;
-   letter-spacing: 0.05em;
+   letter-spacing: 0.06em;
    text-transform: uppercase;
    text-align: center;
+   white-space: nowrap;
    cursor: default;
-   transition: border-color var(--transition), background var(--transition), color var(--transition), transform 0.2s, box-shadow 0.2s;
+   transition: border-color var(--transition), background var(--transition), color var(--transition);
 }
 
-.skills-list li:hover {
+.skills-track .skill-item:hover {
    border-color: var(--accent);
    background: rgba(163,230,53,0.07);
    color: var(--accent);
-   transform: translateY(-2px);
-   box-shadow: 0 6px 20px rgba(163,230,53,0.1);
+}
+
+@keyframes scrollSkills {
+   0%   { transform: translateY(0); }
+   100% { transform: translateY(-50%); }
 }
 
 /* ── PROJECT CARDS ────────────────────────────────── */
