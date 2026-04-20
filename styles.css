@@ -25,7 +25,7 @@
    --text-muted:#ffffff;
 }
 
-/* ── BASE ─────────────────────────────────────────── */
+/*  BASE  */
 body {
    font-family: var(--font-body);
    background-color: var(--bg);
@@ -47,7 +47,7 @@ a {
 }
 a:hover { color: var(--accent2); }
 
-/* ── THEME SWITCH ─────────────────────────────────── */
+/* THEME SWITCH  */
 .theme-switch {
    display: flex;
    align-items: center;
@@ -96,7 +96,7 @@ a:hover { color: var(--accent2); }
    transform: translateX(18px);
 }
 
-/* ── HEADER ───────────────────────────────────────── */
+/* HEADER */
 header {
    position: relative;
    overflow: hidden;
@@ -154,7 +154,7 @@ nav {
    animation: fadeDown 0.8s 0.2s ease both;
 }
 
-/* Sticky state — added by JavaScript on scroll */
+/* sticky state on scroll */
 nav.sticky {
    position: fixed;
    top: 0;
@@ -189,7 +189,7 @@ nav a:hover {
    background: rgba(163,230,53,0.06);
 }
 
-/* ── VIMEO EMBED ──────────────────────────────────── */
+/*  VIMEO  */
 .vimeo-wrapper {
    position: relative;
    width: 100%;
@@ -210,7 +210,7 @@ nav a:hover {
    margin: 0;
 }
 
-/* ── CLIENTS ──────────────────────────────────────── */
+/*  CLIENTS  */
 .clients-track-wrapper {
    overflow: hidden;
    width: 100%;
@@ -257,7 +257,7 @@ nav a:hover {
    100% { transform: translateX(-25%); }
 }
 
-/* ── SECTIONS ─────────────────────────────────────── */
+/*  SECTIONS  */
 section {
    background-color: var(--bg-deep);
    margin: 28px 0;
@@ -281,7 +281,7 @@ h2 {
 
 p { margin-bottom: 14px; color: var(--text); }
 
-/* ── SKILLS SCROLL ────────────────────────────────── */
+/*  SKILLS SCROLL  */
 .skills-scroll-wrapper {
    overflow: hidden;
    height: 128px;
@@ -326,7 +326,7 @@ p { margin-bottom: 14px; color: var(--text); }
    color: var(--accent);
 }
 
-/* ── PROJECT CARDS ────────────────────────────────── */
+/*  PROJECT CARDS  */
 #projectGrid {
    display: grid;
    gap: 20px;
@@ -386,7 +386,7 @@ iframe {
    display: block;
 }
 
-/* ── SCROLL PROGRESS BAR ──────────────────────────── */
+/*  SCROLL PROGRESS BAR  */
 .scroll-progress-track {
    position: fixed;
    right: 0;
@@ -405,7 +405,7 @@ iframe {
    box-shadow: 0 0 8px rgba(163,230,53,0.4);
 }
 
-/* ── FOOTER ───────────────────────────────────────── */
+/*  FOOTER */
 footer {
    text-align: center;
    padding: 24px;
@@ -416,7 +416,7 @@ footer {
    font-size: 0.85rem;
 }
 
-/* ── ANIMATIONS ───────────────────────────────────── */
+/*  ANIMATIONS  */
 @keyframes fadeDown {
    from { opacity: 0; transform: translateY(-18px); }
    to   { opacity: 1; transform: translateY(0); }
