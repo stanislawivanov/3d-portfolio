@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Stanislav Ivanov</title>
+   <link rel="stylesheet" href="styles.css">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=BBH+Bartle&display=swap" rel="stylesheet">
+</head>
+<body>
+
+   <div class="scroll-progress-track">
+      <div class="scroll-progress-fill" id="scrollFill"></div>
+   </div>
+
+   <header>
+      <div class="header-bg"></div>
+      <div class="container">
+         <div class="header-content">
+            <p class="label-text">3D ARTIST & VISUAL DIRECTOR</p>
+            <h1>Stanislav Ivanov</h1>
+            <p class="tagline">Building immersive visuals with Unreal Engine.</p>
+         </div>
+         <nav>
+            <a href="#about">About</a>
+            <a href="#clients">Clients</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <label class="theme-switch" aria-label="Toggle dark mode">
+               <span class="switch-label">Dark Mode</span>
+               <div class="switch-track" id="themeToggle">
+                  <div class="switch-thumb"></div>
+               </div>
+            </label>
+         </nav>
+      </div>
+   </header>
+
+   <main class="container">
+
+      <!-- ABOUT -->
+      <section id="about" class="reveal">
+         <h2>About Me</h2>
+
+         <div class="vimeo-wrapper">
+            <iframe
+               src="https://player.vimeo.com/video/1178089896?h=7b2a71f161&autoplay=1&muted=1&loop=1&background=1"
+               frameborder="0"
+               allow="autoplay; fullscreen; picture-in-picture"
+               allowfullscreen>
+            </iframe>
+         </div>
+
+         <p>
+            I am a 3D artist specializing in cinematic visuals and real-time rendering in Unreal Engine.
+            My work focuses on lighting, mood, and composition to create immersive environments.
+         </p>
+         <p>
+            I enjoy building scenes that feel atmospheric and slightly surreal, combining realism with stylized elements inspired by games and film.
+         </p>
+         <div class="skills-scroll-wrapper">
+            <div class="skills-track" id="skillsList"></div>
+         </div>
+      </section>
+
+      <!-- CLIENTS -->
+      <section id="clients" class="reveal">
+         <h2>Clients</h2>
+         <div class="clients-track-wrapper">
+            <div class="clients-track">
+               <img src="images/client1.png" alt="Client 1">
+               <img src="images/client2.png" alt="Client 2">
+               <img src="images/client3.png" alt="Client 3">
+               <img src="images/client1.png" alt="Client 1">
+               <img src="images/client2.png" alt="Client 2">
+               <img src="images/client3.png" alt="Client 3">
+               <img src="images/client1.png" alt="Client 1">
+               <img src="images/client2.png" alt="Client 2">
+               <img src="images/client3.png" alt="Client 3">
+               <img src="images/client1.png" alt="Client 1">
+               <img src="images/client2.png" alt="Client 2">
+               <img src="images/client3.png" alt="Client 3">
+            </div>
+         </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="reveal">
+         <h2>Projects</h2>
+         <div id="projectGrid"></div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="reveal">
+         <h2>Contact</h2>
+         <p>Email: <a href="mailto:stasick2k@gmail.com">stasick2k@gmail.com</a></p>
+         <p>YouTube: <a href="https://www.youtube.com/@stasxivanov" target="_blank" rel="noopener noreferrer">@stasxivanov</a></p>
+
+         <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <input type="hidden" name="access_key" value="ce770b95-b1d2-438c-bb3f-6de375ed399d">
+
+            <div class="form-group">
+               <input type="text" id="nameInput" name="name" placeholder="Your name">
+               <span class="form-error" id="nameError">Please enter your name.</span>
+            </div>
+            <div class="form-group">
+               <input type="email" id="emailInput" name="email" placeholder="Your email">
+               <span class="form-error" id="emailError">Please enter a valid email.</span>
+            </div>
+            <div class="form-group">
+               <textarea id="messageInput" name="message" placeholder="Your message" rows="5"></textarea>
+               <span class="form-error" id="messageError">Please enter a message.</span>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">Send Message</button>
+            <p class="form-success" id="formSuccess">✓ Message sent! I'll get back to you soon.</p>
+         </form>
+      </section>
+
+   </main>
+
+   <footer id="footer">
+      <p>&copy; 2026 Stas Ivanov. All rights reserved.</p>
+   </footer>
+
+   <script src="script.js"></script>
+</body>
+</html>
